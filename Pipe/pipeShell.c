@@ -1,3 +1,5 @@
+
+/* progarmmation de la commande " ls-l | wc -l " */
 #include<stdio.h>
 #include<sys/wait.h>
 #include<sys/types.h>
