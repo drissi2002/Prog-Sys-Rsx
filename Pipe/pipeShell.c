@@ -7,26 +7,27 @@
 
 int main() 
 { 
-   int tube[2];   
+   int fd[2];   
    char cl , ch[20] ="";
-   pipe(tube);
+   pipe(fd);
    if(fork()==0) 
                 {
-                close(tube[1]);
+                close(fd[1]);
                 close(STDIN_FILENO);  
-                dup(tube[0]);  
+                dup(fd[0]);  
                 execlp("wc","wc","-l",NULL);    
-                close(tube[0]);                
+                close(fd[0]);                
                 }
       else      { 
-                close(tube[0]);
+                close(fd[0]);
                 close(STDOUT_FILENO);
-                dup(tube[1]);
+                dup(fd[1]);
                 execlp("ls","ls","-l",NULL); 
-                close(tube[1]);   
+                close(fd[1]);   
                 }    
  return 0 ;
 }
+
 
 
 
